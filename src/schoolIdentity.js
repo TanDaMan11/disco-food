@@ -1,0 +1,3 @@
+export function parseSchoolEmail(email){const local=String(email||'').trim().toLowerCase().split('@')[0];const parts=local.split('.');const first=(parts[0]||'').replace(/^./,c=>c.toUpperCase());const lastPart=parts.slice(1).join('').replace(/\d/g,'');const last=lastPart.replace(/^./,c=>c.toUpperCase());const digits=(local.match(/\d+/)||[])[0]||null;return{first,last,gradYear:digits,role:digits?'Student':'Staff',isStaff:!digits,staffTitle:!digits?'Outdoor Ed Staff':null}}
+export function cohortBadge(gradYear){if(!gradYear)return'Outdoor Ed Staff';const n=Number(gradYear),start=2000+n-3,end=start+1,label=`Disco '${String(start).slice(-2)}/'${String(end).slice(-2)}`;return n===29?`${label} (Current)`:n<29?`${label} Alum`:label}
+export const staffBadge='Discovery Staff';
